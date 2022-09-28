@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Source Code Service\\WorkerEODTINTelegram\\WorkerEmail\\WorkerEmail.csproj": {}
+    "D:\\Source Code Service\\service_tin\\WorkerEODTINTelegram\\WorkerEmail\\WorkerEmail.csproj": {}
   },
   "projects": {
-    "D:\\Source Code Service\\WorkerEODTINTelegram\\WorkerEmail\\WorkerEmail.csproj": {
+    "D:\\Source Code Service\\service_tin\\WorkerEODTINTelegram\\WorkerEmail\\WorkerEmail.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Source Code Service\\WorkerEODTINTelegram\\WorkerEmail\\WorkerEmail.csproj",
+        "projectUniqueName": "D:\\Source Code Service\\service_tin\\WorkerEODTINTelegram\\WorkerEmail\\WorkerEmail.csproj",
         "projectName": "WorkerEmail",
-        "projectPath": "D:\\Source Code Service\\WorkerEODTINTelegram\\WorkerEmail\\WorkerEmail.csproj",
+        "projectPath": "D:\\Source Code Service\\service_tin\\WorkerEODTINTelegram\\WorkerEmail\\WorkerEmail.csproj",
         "packagesPath": "C:\\Users\\IFA DTI\\.nuget\\packages\\",
-        "outputPath": "D:\\Source Code Service\\WorkerEODTINTelegram\\WorkerEmail\\obj\\",
+        "outputPath": "D:\\Source Code Service\\service_tin\\WorkerEODTINTelegram\\WorkerEmail\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\IFA DTI\\AppData\\Roaming\\NuGet\\NuGet.Config",

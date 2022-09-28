@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sT/j12I7ngdWcvlApYU6FWJ0Zc582tyAhAR0ycWlgsnWj3BYSNoRJGUYSoPGhEHC28kobTpW1lH4h7VIZXPkBg==",
+  "dgSpecHash": "de2wzxwaMWKt+RSEhdXePq1j0bGJ7vekCaEGF3W8r24YZVAlaCjDz/+3fVNQcSlRJqUOIi4WLWhfuNlUAvi/Ig==",
   "success": true,
-  "projectFilePath": "D:\\Source Code Service\\WorkerEODTINTelegram\\WorkerEmail\\WorkerEmail.csproj",
+  "projectFilePath": "D:\\Source Code Service\\service_tin\\WorkerEODTINTelegram\\WorkerEmail\\WorkerEmail.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\IFA DTI\\.nuget\\packages\\azure.core\\1.22.0\\azure.core.1.22.0.nupkg.sha512",
     "C:\\Users\\IFA DTI\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",

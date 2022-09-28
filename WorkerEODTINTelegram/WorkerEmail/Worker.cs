@@ -38,6 +38,7 @@ using System.Globalization;
 using System.Net.Mime;
 using Microsoft.Graph.Models;
 using Telegram.Bot.Types;
+using Google.Protobuf;
 
 namespace WorkerEmail
 {
@@ -1162,75 +1163,83 @@ namespace WorkerEmail
                                 text = text.Replace("#seller#", dr_name_seller[0].Name);
                                 text = text.Replace("#nova#", dt_total[0].AccountNo);
 
-                                //send email
-                                Spire.Email.MailAddress addressFrom = "automatic_ptkbi@outlook.com";
-                                Spire.Email.MailAddress[] addressTo = new Spire.Email.MailAddress[dr_email_buyer.Count()];
-                                int index = 0;
-                                foreach (var item_send in dr_email_buyer)
-                                {
-                                    addressTo[index] = item_send.EmailAddress;
-                                    index++;
-                                }
+                                string seting_email_file = AppDomain.CurrentDomain.BaseDirectory + "\\seting_email.txt";
+                                string seting_email = System.IO.File.ReadAllText(seting_email_file);
+                                string[] email_cc = seting_email.Split("\r\n");
 
-                                Spire.Email.MailMessage message1 = new Spire.Email.MailMessage(addressFrom, addressTo);
-                                message1.Cc.Add("drp@ptkbi.com");
-                                message1.Cc.Add("yunita.esaa@gmail.com");
-                                message1.Cc.Add("jujuk1020@gmail.com");
-                                foreach (var item_send in dr_email_seller)
-                                {
-                                    message1.Cc.Add(item_send.EmailAddress);
-                                }
-                                message1.Subject = "Payment Obligation for " + item.BusinessDate.ToString("dd-MM-yyyy") + " trading day";
-                                message1.BodyHtml = text;
-
-                                message1.Attachments.Add(new Spire.Email.Attachment(stream1, "Nota Pemberitahuan.pdf"));
-                                message1.Attachments.Add(new Spire.Email.Attachment(stream2, "Trade Register.pdf"));
-
-                                Spire.Email.Smtp.SmtpClient smtp = new Spire.Email.Smtp.SmtpClient();
-                                smtp.Host = "smtp.outlook.com";
-                                smtp.ConnectionProtocols = Spire.Email.IMap.ConnectionProtocols.Ssl;
-                                smtp.Username = addressFrom.Address;
-                                smtp.Password = "Jakarta2021";
-                                smtp.Port = 587;
-                                smtp.SendOne(message1);
-                                stream1.Close();
-                                stream2.Close();
-                                //end test
-
-
-                                //System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
-                                //System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient();
-                                //message.From = new System.Net.Mail.MailAddress("pb@ptkbi.com");
+                                ////send email
+                                //Spire.Email.MailAddress addressFrom = "automatic_ptkbi@outlook.com";
+                                //Spire.Email.MailAddress[] addressTo = new Spire.Email.MailAddress[dr_email_buyer.Count()];
+                                //int index = 0;
                                 //foreach (var item_send in dr_email_buyer)
                                 //{
-                                //    message.To.Add(new System.Net.Mail.MailAddress(item_send.EmailAddress));
-                                //}
-                                
-                                //foreach (var item_send in dr_email_seller)
-                                //{
-                                //    message.CC.Add(new System.Net.Mail.MailAddress("drp@ptkbi.com"));
-                                //    message.CC.Add(new System.Net.Mail.MailAddress("jrahmanto@ptkbi.com"));
-                                //    message.CC.Add(new System.Net.Mail.MailAddress(item_send.EmailAddress));
+                                //    addressTo[index] = item_send.EmailAddress;
+                                //    index++;
                                 //}
 
-                                //message.Subject = "Payment Obligation for " + item.BusinessDate.ToString("dd-MM-yyyy") + " trading day";
-                                //message.IsBodyHtml = true; //to make message body as html  
-                                //message.Body = text;
-                                //message.Attachments.Add(new System.Net.Mail.Attachment(stream1, "Nota Pemberitahuan.pdf"));
-                                //message.Attachments.Add(new System.Net.Mail.Attachment(stream2, "Trade Register.pdf"));
-                                //smtp.Port = 25;
-                                //smtp.Host = "10.10.10.2"; //for gmail host  
-                                //smtp.EnableSsl = true;
-                                //smtp.UseDefaultCredentials = false;
-                                //smtp.EnableSsl = false;
-                                //smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
-                                //new Task(delegate
+                                //Spire.Email.MailMessage message1 = new Spire.Email.MailMessage(addressFrom, addressTo);
+                                //message1.Cc.Add("drp@ptkbi.com");
+                                //message1.Cc.Add("yunita.esaa@gmail.com");
+                                //message1.Cc.Add("jujuk1020@gmail.com");
+                                //foreach (var item_send in dr_email_seller)
                                 //{
-                                //    smtp.Send(message);
-                                //}).Start();
+                                //    message1.Cc.Add(item_send.EmailAddress);
+                                //}
+                                //message1.Subject = "Payment Obligation for " + item.BusinessDate.ToString("dd-MM-yyyy") + " trading day";
+                                //message1.BodyHtml = text;
+
+                                //message1.Attachments.Add(new Spire.Email.Attachment(stream1, "Nota Pemberitahuan.pdf"));
+                                //message1.Attachments.Add(new Spire.Email.Attachment(stream2, "Trade Register.pdf"));
+
+                                //Spire.Email.Smtp.SmtpClient smtp = new Spire.Email.Smtp.SmtpClient();
+                                //smtp.Host = "smtp.outlook.com";
+                                //smtp.ConnectionProtocols = Spire.Email.IMap.ConnectionProtocols.Ssl;
+                                //smtp.Username = addressFrom.Address;
+                                //smtp.Password = "Jakarta2021";
+                                //smtp.Port = 587;
+                                //smtp.SendOne(message1);
+                                //stream1.Close();
+                                //stream2.Close();
+                                ////end test
+
+
+                                System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
+                                System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient();
+                                message.From = new System.Net.Mail.MailAddress("pb@ptkbi.com");
+                                foreach (var item_send in dr_email_buyer)
+                                {
+                                    message.To.Add(new System.Net.Mail.MailAddress(item_send.EmailAddress));
+                                }
+
+                                foreach (var item_send in dr_email_seller)
+                                {
+                                    message.CC.Add(new System.Net.Mail.MailAddress(item_send.EmailAddress));
+                                }
+                                foreach (var item_email in email_cc)
+                                {
+                                    message.CC.Add(new System.Net.Mail.MailAddress(item_email));
+                                }
+
+                                message.Subject = "Payment Obligation for " + item.BusinessDate.ToString("dd-MM-yyyy") + " trading day";
+                                message.IsBodyHtml = true; //to make message body as html  
+                                message.Body = text;
+                                message.Attachments.Add(new System.Net.Mail.Attachment(stream1, "Nota Pemberitahuan.pdf"));
+                                message.Attachments.Add(new System.Net.Mail.Attachment(stream2, "Trade Register.pdf"));
+                                smtp.Port = 25;
+                                smtp.Host = "10.10.10.2"; //for gmail host  
+                                smtp.EnableSsl = true;
+                                smtp.UseDefaultCredentials = false;
+                                smtp.EnableSsl = false;
+                                smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+                                new Task(delegate
+                                {
+                                    smtp.Send(message);
+                                }).Start();
                             }
                             catch (Exception ex)
                             {
+                                monitoringServices("DOP_TinTelegram", "Send email nota pemberitahuan error "+ex.Message, "10.10.10.99", "Eror");
+
                             }
                             Bot.SendTextMessageAsync(chat_id, "_Success proccesing send email MSP atau Amalgamet " + DateTime.Now.ToString("HH:mm:ss") + "_", ParseMode.Markdown);
 
@@ -1238,12 +1247,9 @@ namespace WorkerEmail
                         else
                         {
                             Bot.SendTextMessageAsync(chat_id, "_Tidak ada transaksi Amalgamet atau MSP " + DateTime.Now.ToString("HH:mm:ss") + "_", ParseMode.Markdown);
-
                         }
                     }
-
                 }
-                
             }
             catch (Exception ex)
             {
