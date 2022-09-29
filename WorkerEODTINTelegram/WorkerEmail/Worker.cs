@@ -1157,7 +1157,7 @@ namespace WorkerEmail
                             {
                                 string file = AppDomain.CurrentDomain.BaseDirectory + "\\index.html";
                                 string text = System.IO.File.ReadAllText(file);
-                                text = text.Replace("#amount#", dt_total[0].Amount.ToString("#,##0"));
+                                text = text.Replace("#amount#", dt_total[0].Amount.ToString("#,##0.00"));
                                 text = text.Replace("#businessdate#", item.BusinessDate.ToString("dd-MMM-yyyy"));
                                 text = text.Replace("#name#", dr_name[0].Name);
                                 text = text.Replace("#seller#", dr_name_seller[0].Name);
@@ -1239,7 +1239,6 @@ namespace WorkerEmail
                             catch (Exception ex)
                             {
                                 monitoringServices("DOP_TinTelegram", "Send email nota pemberitahuan error "+ex.Message, "10.10.10.99", "Eror");
-
                             }
                             Bot.SendTextMessageAsync(chat_id, "_Success proccesing send email MSP atau Amalgamet " + DateTime.Now.ToString("HH:mm:ss") + "_", ParseMode.Markdown);
 
