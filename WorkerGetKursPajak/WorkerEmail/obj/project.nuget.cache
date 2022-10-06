@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "U9OLacvFawxBe0VRKueqrteSBMhT6pfNItR4vxWEq7jyCV/l8eOWUC5Y87aoX/orxV/4m6ByAGJCgtKP6/mGrA==",
+  "dgSpecHash": "FTibjzniJKhzq01m5pqOgfo4FFhEOQL6S8mImxbSoNi7SlqVSQuN7Cl8PfYy0WGvQpmgydmHMjoEz/Wo05IYwg==",
   "success": true,
-  "projectFilePath": "D:\\Source Code Service\\WorkerGetKursPajak\\WorkerEmail\\WorkerEmail.csproj",
+  "projectFilePath": "D:\\Source Code Service\\service_timah\\WorkerGetKursPajak\\WorkerEmail\\WorkerEmail.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\IFA DTI\\.nuget\\packages\\magick.net-q8-anycpu\\7.9.0\\magick.net-q8-anycpu.7.9.0.nupkg.sha512",
     "C:\\Users\\IFA DTI\\.nuget\\packages\\microsoft.extensions.configuration\\3.1.22\\microsoft.extensions.configuration.3.1.22.nupkg.sha512",

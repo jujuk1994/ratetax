@@ -49,7 +49,7 @@ namespace WorkerEmail
             {
                 try
                 {
-                    if (DateTime.Now.Hour == 7)
+                    if (DateTime.Now.Hour == 15)
                     {
                         IWebDriver ChromeDriver2 = new ChromeDriver();
                         ChromeDriver2.Manage().Window.Maximize();
